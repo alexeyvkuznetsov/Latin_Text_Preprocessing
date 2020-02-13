@@ -77,7 +77,7 @@ head(dtf)
 
 dtm <- document_term_matrix(x = dtf)
 
-dtm <- dtm_remove_lowfreq(dtm, minfreq = 4)
+dtm <- dtm_remove_lowfreq(dtm, minfreq = 2)
 
 head(dtm_colsums(dtm))
 
@@ -85,3 +85,9 @@ dtm <- dtm_remove_terms(dtm, terms = c("ann.", "ann", "an", "annus", "aer", "aes
 
 
 dtm <- dtm_remove_terms(dtm, terms = c("ann.", "ann", "an", "annus", "aer", "aes", "suus", "filius", "pater", "frater", "pars", "maldra", "theudericus", "hucusque", "hispanium", "caeter", "justinianus", "praelio", "cdxxxnum._rom.", "cdxinum._rom.", "cdxix", "op"))
+
+
+dtm <- as.matrix(dtm)
+tdm <- t(dtm)
+
+
