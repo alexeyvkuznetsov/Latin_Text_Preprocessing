@@ -9,7 +9,7 @@
 library(tm)
 library(udpipe)
 
-setwd("D:/Latin_Text_Preprocessing/")
+setwd("D:/GitHub/Latin_Text_Preprocessing/")
 
 
 prologus<-paste(scan(file ="files/01 prologus.txt",what='character'),collapse=" ")
@@ -64,7 +64,7 @@ historia$texts <- stripWhitespace(historia$texts)
 udmodel_latin <- udpipe_load_model(file = "latin-ittb-ud-2.5-191206.udpipe")
 
 
-x <- udpipe_annotate(udmodel_latin, x = historia$texts, doc_id = fivebooks$book, tagger = "default", parser = "default", trace = TRUE)
+x <- udpipe_annotate(udmodel_latin, x = historia$texts, doc_id = historia$book, tagger = "default", parser = "default", trace = TRUE)
 x <- as.data.frame(x)
 
 
