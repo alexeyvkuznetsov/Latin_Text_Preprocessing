@@ -75,19 +75,25 @@ dtf <- document_term_frequencies(dtf, document = "doc_id", term = "lemma")
 head(dtf)
 
 
+## Create a document-term matrix
 dtm <- document_term_matrix(x = dtf)
 
+## Remove words which do not occur that much
 dtm <- dtm_remove_lowfreq(dtm, minfreq = 2)
 
 head(dtm_colsums(dtm))
 
 dtm <- dtm_remove_terms(dtm, terms = c("ann.", "ann", "an", "annus", "aer", "aes", "suus", "filius", "pater", "frater", "pars", "maldra", "theudericus", "gothus", "hucusque", "hispanium", "caeter", "justinianus", "praelio", "cdxxxnum._rom.", "cdxinum._rom.", "cdxix", "op"))
 
-
 dtm <- dtm_remove_terms(dtm, terms = c("ann.", "ann", "an", "annus", "aer", "aes", "suus", "filius", "pater", "frater", "pars", "maldra", "theudericus", "hucusque", "hispanium", "caeter", "justinianus", "praelio", "cdxxxnum._rom.", "cdxinum._rom.", "cdxix", "op"))
 
 
+# Create a term-document matrix
 dtm <- as.matrix(dtm)
 tdm <- t(dtm)
+
+# Convert a DTM to a Character Vector of documents
+library(textmineR)
+dtm.to.docs <- Dtm2Docs(dtm = dtm)
 
 
