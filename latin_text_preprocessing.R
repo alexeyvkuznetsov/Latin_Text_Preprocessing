@@ -8,6 +8,7 @@
 ########################################################################
 library(tm)
 library(udpipe)
+library(textmineR)
 
 setwd("D:/GitHub/Latin_Text_Preprocessing/")
 
@@ -96,5 +97,22 @@ tdm <- t(dtm)
 # Convert a DTM to a Character Vector of documents
 library(textmineR)
 dtm.to.docs <- Dtm2Docs(dtm = dtm)
+
+
+## Convert dtm to a list of text
+dtm.to.docs <- apply(dtm, 1, function(x) {
+  paste(rep(names(x), x), collapse=" ")
+})
+
+## convert list of text to a Corpus
+
+myCorpus <- VCorpus(VectorSource(dtm.to.docs))
+inspect(myCorpus)
+
+# Created term-document matrix from corpus
+
+tdm <- TermDocumentMatrix(myCorpus)
+
+td_matrix <- as.matrix(tdm)
 
 
