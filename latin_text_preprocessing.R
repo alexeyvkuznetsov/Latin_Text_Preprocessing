@@ -10,7 +10,7 @@ library(tm)
 library(udpipe)
 library(textmineR)
 
-setwd("D:/GitHub/Latin_Text_Preprocessing/")
+setwd("C:/GitHub/Latin_Text_Preprocessing/")
 
 
 prologus<-paste(scan(file ="files/01 prologus.txt",what='character'),collapse=" ")
@@ -96,7 +96,7 @@ tdm <- t(dtm)
 
 # Convert a DTM to a Character Vector of documents
 library(textmineR)
-dtm.to.docs <- Dtm2Docs(dtm = dtm)
+dtm.to.docs <- textmineR::Dtm2Docs(dtm = dtm)
 
 
 ## Convert dtm to a list of text
