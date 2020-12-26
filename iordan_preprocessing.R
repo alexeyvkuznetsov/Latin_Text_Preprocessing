@@ -49,7 +49,7 @@ MyStopwords <- c(lat_stop_perseus, rome_number_1000, customStopWords)
 
 iordan$texts <- removeWords(iordan$texts, MyStopwords)
 
-historia$texts <- stripWhitespace(historia$texts)
+iordan$texts <- stripWhitespace(iordan$texts)
 
 
 
