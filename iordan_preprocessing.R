@@ -1,6 +1,6 @@
 ########################################################################
 ########################################################################
-##  Latin Texts Preprocessing                                         ##
+##  Latin Texts Preprocessing (Getica)                                ##
 ##  Author: Alexey Kuznetsov                                          ##
 ##  URL: https://github.com/alexeyvkuznetsov/Latin_Text_Preprocessing ##
 ##       https://alexeyvkuznetsov.github.io                           ##
