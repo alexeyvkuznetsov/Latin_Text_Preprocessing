@@ -10,33 +10,24 @@ library(tm)
 library(udpipe)
 library(textmineR)
 
-setwd("C:/GitHub/Latin_Text_Preprocessing/")
+setwd("D:/GitHub/Latin_Text_Preprocessing/")
 
 
-prologus<-paste(scan(file ="files/01 prologus.txt",what='character'),collapse=" ")
-historia_g<-paste(scan(file ="files/02 historia_g.txt",what='character'),collapse=" ")
-recapitulatio<-paste(scan(file ="files/03 recapitulatio.txt",what='character'),collapse=" ")
-historia_w<-paste(scan(file ="files/04 historia_w.txt",what='character'),collapse=" ")
-historia_s<-paste(scan(file ="files/05 historia_s.txt",what='character'),collapse=" ")
+iordan<-paste(scan(file ="files/iordan.txt",what='character'),collapse=" ")
 
-prologus<-data.frame(texts=prologus)
-historia_g<-data.frame(texts=historia_g)
-recapitulatio<-data.frame(texts=recapitulatio)
-historia_w<-data.frame(texts=historia_w)
-historia_s<-data.frame(texts=historia_s)
 
-prologus$book<-"1 Prologus"
-historia_g$book<-"2 Historia Gothorum"
-recapitulatio$book<-"3 Recapitulatio"
-historia_w$book<-"4 Historia Wandalorum"
-historia_s$book<-"5 Historia Suevorum"
+iordan<-data.frame(texts=iordan)
 
-historia<-rbind(prologus,historia_g,recapitulatio,historia_w,historia_s)
 
-#historia$texts <- stripWhitespace(historia$texts)
-historia$texts <- tolower(historia$texts)
-historia$texts <- removePunctuation(historia$texts)
-historia$texts <- removeNumbers(historia$texts)
+iordan$book<-"Getica"
+
+
+
+
+iordan$texts <- stripWhitespace(iordan$texts)
+iordan$texts <- tolower(iordan$texts)
+iordan$texts <- removePunctuation(iordan$texts)
+iordan$texts <- removeNumbers(iordan$texts)
 
 # Stopwords
 
@@ -56,7 +47,7 @@ MyStopwords <- c(lat_stop_perseus, rome_number_1000, customStopWords)
 
 #historia$texts <- removeWords(historia$texts, c(lat_stop_perseus, rome_number_1000))
 
-historia$texts <- removeWords(historia$texts, MyStopwords)
+iordan$texts <- removeWords(iordan$texts, MyStopwords)
 
 historia$texts <- stripWhitespace(historia$texts)
 
@@ -65,7 +56,7 @@ historia$texts <- stripWhitespace(historia$texts)
 udmodel_latin <- udpipe_load_model(file = "latin-ittb-ud-2.5-191206.udpipe")
 
 
-x <- udpipe_annotate(udmodel_latin, x = historia$texts, doc_id = historia$book, tagger = "default", parser = "default", trace = TRUE)
+x <- udpipe_annotate(udmodel_latin, x = iordan$texts, doc_id = iordan$book, tagger = "default", parser = "default", trace = TRUE)
 x <- as.data.frame(x)
 
 
