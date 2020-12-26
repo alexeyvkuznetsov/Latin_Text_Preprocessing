@@ -93,6 +93,7 @@ dtm <- dtm_remove_terms(dtm, terms = c("ann.", "ann", "an", "annus", "aer", "aes
 # Create a term-document matrix
 dtm <- as.matrix(dtm)
 tdm <- t(dtm)
+#tdm <- t(as.matrix(dtm))
 
 # Convert a DTM to a Character Vector of documents
 library(textmineR)
